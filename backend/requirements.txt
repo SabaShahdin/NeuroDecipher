@@ -1,0 +1,17 @@
+flask
+flask-cors
+gunicorn
+PyJWT
+celery
+redis
+psycopg2-binary
+numpy>=1.26,<3
+scipy
+torch
+mne
+h5py
+scikit-learn
+reportlab
+torch-geometric
+boto3==1.39.4
+botocore==1.39.4

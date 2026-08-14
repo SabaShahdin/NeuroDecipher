@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Runtime data — populated by volumes at container run time, not build time.
+neurodecipher_uploaded_files/*
+!neurodecipher_uploaded_files/.gitkeep
+generated_reports/*
+!generated_reports/.gitkeep
+models/*
+!models/.gitkeep
+!models/**/.gitkeep
+
+*.md
+.git/
+.gitignore

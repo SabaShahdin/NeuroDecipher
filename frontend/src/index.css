@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--nd-bg);
+  color: var(--nd-text);
+}
+
+/*
+  NeuroDecipher system scrollbar
+  --------------------------------------------------------------------------
+  Single custom scrollbar used everywhere. It matches the prediction channel
+  panel: thin, rounded, dark-shell friendly, and merged into the surrounding
+  panel instead of showing the browser's white Windows scrollbar rail.
+*/
+:root {
+  --nd-scroll-size: 8px;
+  --nd-scroll-radius: 999px;
+  --nd-scroll-track: transparent;
+  --nd-scroll-track-hover: rgba(37, 99, 235, 0.10);
+  --nd-scroll-thumb: rgba(37, 99, 235, 0.38);
+  --nd-scroll-thumb-hover: rgba(37, 99, 235, 0.70);
+  --nd-scroll-border: transparent;
+  --nd-bg: #F2F7FF;
+  --nd-bg-soft: #E6F1FF;
+  --nd-panel: rgba(255,255,255,.97);
+  --nd-panel-2: rgba(237,246,255,.96);
+  --nd-text: #08214A;
+  --nd-muted: #315C96;
+  --nd-accent: #2563EB;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --nd-scroll-track: transparent;
+  --nd-scroll-track-hover: rgba(96, 165, 250, 0.14);
+  --nd-scroll-thumb: rgba(96, 165, 250, 0.38);
+  --nd-scroll-thumb-hover: rgba(96, 165, 250, 0.66);
+  --nd-scroll-border: transparent;
+  --nd-bg: #071A2F;
+  --nd-bg-soft: #0B2642;
+  --nd-panel: rgba(12,35,61,.96);
+  --nd-panel-2: rgba(15,43,73,.94);
+  --nd-text: #DCEBFF;
+  --nd-muted: #AFC8E6;
+  --nd-accent: #4BA3FF;
+  color-scheme: dark;
+}
+
+html, body, #root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--nd-scroll-thumb) transparent;
+}
+
+*, *::before, *::after {
+  scrollbar-width: thin;
+  scrollbar-color: var(--nd-scroll-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: var(--nd-scroll-size);
+  height: var(--nd-scroll-size);
+  background: transparent;
+}
+
+/* Remove the native Windows/Chromium arrow buttons that caused the white rail. */
+*::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button:single-button,
+*::-webkit-scrollbar-button:vertical:decrement,
+*::-webkit-scrollbar-button:vertical:increment,
+*::-webkit-scrollbar-button:horizontal:decrement,
+*::-webkit-scrollbar-button:horizontal:increment {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track-piece {
+  background: var(--nd-scroll-track);
+  border: 0;
+  border-radius: var(--nd-scroll-radius);
+}
+
+*::-webkit-scrollbar-track:hover {
+  background: var(--nd-scroll-track-hover);
+}
+
+*::-webkit-scrollbar-thumb {
+  min-height: 38px;
+  min-width: 38px;
+  border-radius: var(--nd-scroll-radius);
+  border: 2px solid transparent;
+  background-color: var(--nd-scroll-thumb);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--nd-scroll-thumb-hover);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner,
+*::-webkit-resizer {
+  background: transparent;
+}
+
+/* Add this to scroll containers that should visually inherit the panel surface. */
+.nd-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--nd-scroll-thumb) transparent;
+}
+
+.nd-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.nd-scrollbar::-webkit-scrollbar-track,
+.nd-scrollbar::-webkit-scrollbar-track-piece {
+  background: transparent !important;
+}
+
+.nd-scrollbar::-webkit-scrollbar-thumb {
+  border: 1.5px solid transparent;
+}
+
+/* Focus rings — accessible */
+button:focus-visible {
+  outline: 2px solid var(--nd-accent);
+  outline-offset: 2px;
+}
+select:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--nd-accent);
+  outline-offset: 1px;
+}
+
+button { transition: all 0.12s ease; cursor: pointer; }
+
+input[type="range"] {
+  accent-color: var(--nd-accent);
+}
+
+/* Status dot pulse — light variants */
+@keyframes ndPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 3px rgba(37,99,235,0.2); }
+  50%       { opacity: 0.6; box-shadow: 0 0 0 5px rgba(37,99,235,0.05); }
+}
+
+@keyframes ndPulseGreen {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(5,150,105,0.2); }
+  50%       { box-shadow: 0 0 0 5px rgba(5,150,105,0.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Panel shadow — light theme uses subtle shadows instead of dark borders */
+.panel-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+
+
+/* Modular page layout helpers */
+.nd-page-shell {
+  min-height: 100vh;
+  background: var(--nd-bg);
+  color: var(--nd-text);
+}
+.nd-panel-surface {
+  background: var(--nd-panel);
+  border: 1px solid rgba(96,165,250,.28);
+  box-shadow: 0 14px 38px rgba(15, 23, 42, .10);
+}
+html[data-theme="dark"] .nd-panel-surface {
+  border-color: rgba(147,197,253,.22);
+  box-shadow: 0 18px 48px rgba(2, 8, 23, .28);
+}
+
+
+/* Brighter clinical blue text system */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+html[data-theme="dark"] body {
+  background: #071A2F;
+}
+html[data-theme="dark"] .nd-panel-surface,
+html[data-theme="dark"] .recording-page-shell {
+  color: #DCEBFF;
+}
+
+
+
+/* Refined dark clinical blue theme: darker background, softer readable text. */
+html[data-theme="dark"] .nd-page-shell,
+html[data-theme="dark"] .recording-page-shell {
+  background: #071A2F !important;
+  color: #DCEBFF !important;
+}
+html[data-theme="dark"] .nd-panel-surface {
+  background: rgba(12,35,61,.96) !important;
+  border-color: rgba(96,165,250,.26) !important;
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  background-color: rgba(7,26,47,.72);
+  color: #DCEBFF;
+  border-color: rgba(96,165,250,.30);
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+  color: #7F9DBC;
+}
+
+* { font-family: inherit; }

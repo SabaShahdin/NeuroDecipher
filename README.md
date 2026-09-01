@@ -161,10 +161,6 @@ The system is designed to analyze multiple seizure categories, including:
 
 - FNSZ — Focal Non-Specific Seizure
 - GNSZ — Generalized Non-Specific Seizure
-- TCSZ — Tonic-Clonic Seizure
-- ABSZ — Absence Seizure
-- TNSZ — Tonic Seizure
-- MYSZ — Myoclonic Seizure
 - CPSZ — Complex Partial Seizure
 
 Class availability during training and evaluation depends on the available EEG samples in the dataset.

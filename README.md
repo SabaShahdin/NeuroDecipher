@@ -58,7 +58,6 @@ Annotation & Report Generation
 - Multi-class **seizure subtype classification**
 - Multichannel EEG preprocessing and segmentation
 - Graph-based representation of EEG channels
-- Hybrid **CNN-LSTM** deep-learning architecture
 - Clinically inspired EEG rule engine
 - AI + rule-based confidence fusion
 - Segment-wise prediction and confidence scores
@@ -88,7 +87,7 @@ This representation allows the system to preserve relationships between differen
 
 ## AI Engine
 
-The AI module uses a **hybrid CNN-LSTM architecture** to learn seizure-related patterns from graph-structured EEG data.
+The AI module uses a **hybrid GCN-LSTM architecture** to learn seizure-related patterns from graph-structured EEG data.
 
 The processing pipeline includes:
 
@@ -97,7 +96,6 @@ The processing pipeline includes:
 3. Feature extraction
 4. Graph construction
 5. Graph-to-tensor transformation
-6. CNN-based feature extraction
 7. Global pooling and regularization
 8. LSTM-based temporal modeling
 9. Task-specific prediction heads
